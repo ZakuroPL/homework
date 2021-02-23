@@ -1,0 +1,7 @@
+<h3 *ngIf="isEmpty">Nie masz jeszcze żadnego pytania.</h3>
+
+<div *ngFor="let c of challengesArray">
+  <p><span class="pointer" routerLink="/challenge/{{c.id}}" routerLinkActive="activeLink">{{ c.title }}</span> / <span (click)="delete(c.id)" class="pointer">usuń</span></p>
+</div>
+<br>
+<button  routerLink="/add" routerLinkActive="activeLink">Dodaj pytanie</button>

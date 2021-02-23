@@ -1,0 +1,18 @@
+<form [formGroup]="challengeForm" (ngSubmit)="checkForm()">
+  <input [ngClass]="{redBorder: (isClicked && f.title.errors?.required || isClicked && f.title.errors?.pattern)}" type="text" formControlName="title" placeholder="pytanie" (click)="isSaved=false;">?<br>
+  <input [ngClass]="{redBorder: isClicked && f.answer1.errors?.required}" type="text" formControlName="answer1" placeholder="odpowiedź 1"><br>
+  <input [ngClass]="{redBorder: isClicked && f.answer2.errors?.required}" type="text" formControlName="answer2" placeholder="odpowiedź 2"><br>
+  <input [ngClass]="{redBorder: isClicked && f.answer3.errors?.required}" type="text" formControlName="answer3" placeholder="odpowiedź 3"><br>
+  <input [ngClass]="{redBorder: isClicked && f.answer4.errors?.required}" type="text" formControlName="answer4" placeholder="odpowiedź 4"><br>
+  <label for="select">Poprawna odpowiedź:</label>
+  <select [ngClass]="{redBorder: isClicked && f.correctAnswer.errors?.required}" formControlName="correctAnswer" name="select">
+    <option value=1>1</option>
+    <option value=2>2</option>
+    <option value=3>3</option>
+    <option value=4>4</option>
+  </select>
+  <button type="submit">zapisz</button>
+  <p *ngIf="(isClicked && f.title.errors?.pattern || isClicked && f.title.errors?.required)">Pytanie musi składać się z min. 10 znaków i nie zawierać symbolu "?"</p>
+</form>
+<p *ngIf="isSaved">Twoje pytanie zostało zapisane</p>
+<button  routerLink="/list" routerLinkActive="activeLink">Cofnij</button>

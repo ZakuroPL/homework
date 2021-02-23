@@ -1,0 +1,34 @@
+<div class="grid">
+  <div class="top">
+    <p>{{challenge.title}}?</p>
+    <p>Zaznacz poprawną odpowiedź</p>
+  </div>
+  <div class="answer1 answer pointer center foto" [ngClass]="{selected: selected == 1, correct: (isCorrect && challenge.correctAnswer == 1),
+    wrong: (!isCorrect && ischecked && selected == 1 && challenge.correctAnswer != 1)}" (click)="select(1)">
+    <h2>{{challenge.answer1}}</h2>
+  </div>
+  <div class="answer2 answer pointer center foto" [ngClass]="{selected: selected == 2, correct: (isCorrect && challenge.correctAnswer == 2),
+    wrong: (!isCorrect && ischecked && selected == 2 && challenge.correctAnswer != 2)}" (click)="select(2)">
+    <h2>{{challenge.answer2}}</h2>
+  </div>
+  <div class="answer3 answer pointer center foto" [ngClass]="{selected: selected == 3, correct: (isCorrect && challenge.correctAnswer == 3),
+    wrong: (!isCorrect && ischecked && selected == 3 && challenge.correctAnswer != 3)}" (click)="select(3)">
+    <h2>{{challenge.answer3}}</h2>
+  </div>
+  <div class="answer4 answer pointer center foto" [ngClass]="{selected: selected == 4, correct: (isCorrect && challenge.correctAnswer == 4),
+    wrong: (!isCorrect && ischecked && selected == 4 && challenge.correctAnswer != 4)}" (click)="select(4)">
+    <h2>{{challenge.answer4}}</h2>
+  </div>
+  <div class="check pointer center" (click)="check()">
+    <p>Sprawdź</p>
+  </div>
+  <div class="back pointer center" (click)="check()" routerLink="/list" routerLinkActive="activeLink">
+    <p>Cofnij</p>
+  </div>
+</div>
+<div class="under center">
+  <h1 *ngIf="isCorrect && ischecked">Super!!!<br>Odpowiedziałeś prawidłowo</h1>
+  <h1 *ngIf="!isCorrect && ischecked">Ups!!!<br>Spróbuj ponownie</h1>
+</div>
+
+
