@@ -16,12 +16,12 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getArrayFromLocalStorage();
+    this.checkIfIsEmpty();
   }
 
   getArrayFromLocalStorage(){
     this.challengesArray = JSON.parse(localStorage.getItem("challengesArray"))
-    if(!this.challengesArray) this.isEmpty = true;
-    if(!localStorage.getItem("id")) localStorage.removeItem("challengesArray");
+
   }
   delete(id:number){
     for(let c of this.challengesArray){
@@ -31,5 +31,12 @@ export class ListComponent implements OnInit {
         localStorage.setItem("challengesArray", JSON.stringify(this.challengesArray));
       }
     }
+    this.checkIfIsEmpty();
+  }
+  checkIfIsEmpty(){
+    if(!this.challengesArray || this.challengesArray.length == 0) this.isEmpty = true;
+    else this.isEmpty = false;
+    if(!localStorage.getItem("id")) localStorage.removeItem("challengesArray");
   }
 }
+
