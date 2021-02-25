@@ -19,7 +19,7 @@ export class CreateChallengeComponent implements OnInit {
 
   ngOnInit(): void {
     this.challengeForm = this.formBuilder.group({
-      title: ['', [Validators.required, Validators.pattern('[a-zA-Zą-żó0-9$&+,:; =@#|<>.^*()%!-]*'), Validators.minLength(10)]],
+      title: ['', [Validators.required, Validators.pattern('[^?]*'), Validators.minLength(10)]],
       answer1: ['', Validators.required],
       answer2: ['', Validators.required],
       answer3: ['', Validators.required],
